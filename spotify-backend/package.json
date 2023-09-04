@@ -9,8 +9,12 @@
   "author": "shyali",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "mongoose": "^7.3.2"
+    "jsonwebtoken": "^9.0.1",
+    "mongoose": "^7.3.2",
+    "passport": "^0.6.0",
+    "passport-jwt": "^4.0.1"
   }
 }

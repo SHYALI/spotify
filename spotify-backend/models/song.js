@@ -3,16 +3,16 @@ const mongoose = require("mongoose");
 const song  = new mongoose.Schema({
 
     name: {
-          type : string,
+          type : String,
           required:true,
     },
     thumbnail:{
-        type : string ,    // thumbnail data type is not image bcoz we are going to copy url 
+        type : String ,    // thumbnail data type is not image bcoz we are going to copy url 
         required : true ,
     },
 
     track:{
-        type : string ,
+        type : String ,
         required : true  ,
     },
 
@@ -25,6 +25,6 @@ const song  = new mongoose.Schema({
 
 });
 
-const songmodel = mongoose.model("song", song);
+const Songmodel = mongoose.model("Song", Song);
 
-module.export = songModel;
+module.exports = SongModel;

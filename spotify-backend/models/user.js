@@ -1,46 +1,46 @@
 const mongoose = require("mongoose");
 
-const user = new mongoose.Schema({
+const User = new mongoose.Schema({
 
     firstname: {
-          type : string,
+          type : String,
           required:true,
     },
     lastname:{
-        type : string ,
+        type : String ,
         required : false ,
     },
 
     email:{
-        type : string ,
+        type : String ,
         required : true  ,
     },
 
     username:{
-        type : string ,
+        type : String ,
         required : true ,
     },
 
     likedsong:{
         // we will change this to array later 
-        type : string ,
+        type : String ,
         default : "",
     },
 
     likedplaylist:{
         // we will change this to array later 
-        type : string ,
+        type : String ,
         default : "",
     },
 
     subscribedArtist: {
         // we will change this to array later 
-        type : string ,
+        type : String ,
         default : ""
-    }
+    },
 
 });
 
-const userModel = mongoose.model("user", user);
+const UserModel = mongoose.model("User", User);
 
-module.export = userModel;
+module.exports = UserModel;

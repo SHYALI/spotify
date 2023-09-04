@@ -1,13 +1,13 @@
 const mongoose = require("mongoose");
 
-const playlist   = new mongoose.Schema({
+const Playlist   = new mongoose.Schema({
 
     name: {
-          type : string,
+          type : String,
           required:true,
     },
     thumbnail:{
-        type : string ,    // thumbnail data type is not image bcoz we are going to copy url 
+        type : String ,    // thumbnail data type is not image bcoz we are going to copy url 
         required : true ,
     },
 
@@ -36,6 +36,6 @@ collaborators :[
 
 });
 
-const playlistmodel = mongoose.model("playlist", playlist);
+const PlaylistModel = mongoose.model("Playlist", Playlist);
 
-module.export = playlistModel;
+module.exports = PlaylistModel;
