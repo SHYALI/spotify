@@ -13,9 +13,9 @@ app.use(express.json());
 
 //console.log(process.env);
 
-mongoose.connect("mongodb+srv://shyali:"+
-process.env.MONGO_PASSWORD+
-"@cluster0.uq9lrkr.mongodb.net/?retryWrites=true&w=majority",
+mongoose.connect("mongodb+srv://spotify:"+
+process.env.MONGO_PASSWORD +
+"@cluster0.uojulql.mongodb.net/?retryWrites=true&w=majority",
 {
  useNewUrlParser : true,
  useUnifiedTopology : true
@@ -27,7 +27,7 @@ process.env.MONGO_PASSWORD+
 //     console.log("error while connecting to mangodb ")
 // });
 
-// set up passport-jwt 
+//set up passport-jwt 
 
 
 let opts = {}
