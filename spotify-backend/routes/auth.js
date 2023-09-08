@@ -28,6 +28,10 @@ router.post("/register", async (req,res) => {
   // step - 3 create the new user in the DB
   // step - 3.1 we dont store password in plain text 
   // xyz  we convert the plain text password to hash 
+  // xyz asjkdnfvkjfbnkbngkjbnkjgnbgkjngjn
+  //my hash depend on two parameters 
+  // if we keep those two parameter same then xyz always gives the same hash 
+
   
  const hashedPassword = await bcrypt.hash(password,10);
 const newUserData = {
@@ -52,6 +56,39 @@ const userToReturn = {...newUser.toJSON(),token};
 console.log(userToReturn);
 delete userToReturn.password;
 return res.status(200).json(userToReturn)
+
+});
+
+router.post("/login", async(req,res)=>
+{
+    // step 1 : get email and password send by the user by reg.body
+
+    const {email,password} = req.body;
+
+    // step 2 : check the user with given id exist or not , if not the credentials are :)
+
+    const user = await User.findOne({email:email});
+
+    if(!user){
+        return res.status(403).json({err:"invalid credentials"});
+    }
+    // step 3 : if the user exist ,check the password is correct if not then the credentials are invalid 
+    // this is a tricky step.because we have stored the original password in the hashed form ,which we cannot use to get the origin password 
+    // we cannot do if(password==userpassword)
+    //bcrypt.compare us to compare one password into plaintext(password form reg.body) to a hashed password (the one which is secure)
+    const isPasswordValid = await bcrypt.compare(password ,user.password)
+    // this will be true or false 
+    if(!isPasswordValid){
+        return res.status(403).json({err:"invalid credentials "})
+    }
+
+    // step 4 : if the credentials are correct return the token to the user 
+
+    const token = await getToken(user.email,user);
+    const userToReturn = {...user.toJSON(),token};
+    console.log(userToReturn);
+    delete userToReturn.password;
+    return res.status(200).json(userToReturn)
 
 });
 
