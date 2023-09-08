@@ -7,7 +7,7 @@ const User = require("./models/User");
 const authRoutes=require("./routes/auth");   
 require("dotenv").config();
 const app = express();
-const port = 8000;
+const port = 8080;
 
 app.use(express.json()); 
 

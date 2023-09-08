@@ -14,7 +14,7 @@ router.post("/register", async (req,res) => {
 
     //  step 2 --> doesnt the user of this email already exist ? if yes then we throw an error 
     
-    const User = await User.findOne({email: email});    
+    const user = await User.findOne({email: email});    
 
    if (user){
 
@@ -38,7 +38,7 @@ const newUserData = {
     username,
 };
 
-const newUser = await User.create(newUserData);
+const newUser = await  User.create(newUserData);
 console.log(newUserData);
 
 // step -4: we want to create a token to return to the user 
